@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- ================= PAYMENT (Constructor IOC) ================= -->
+
+    <bean id="upiPayment"
+          class="in.prahlad.springcore.ioc.payment.UpiPayment" />
+
+    <bean id="orderService"
+          class="in.prahlad.springcore.ioc.payment.OrderService">
+        <constructor-arg ref="upiPayment"/>
+    </bean>
+
+    <!-- ================= NOTIFICATION (Setter IOC) ================= -->
+
+    <bean id="emailService"
+          class="in.prahlad.springcore.ioc.notification.EmailService" />
+
+    <bean id="notificationService"
+          class="in.prahlad.springcore.ioc.notification.NotificationService">
+        <property name="messageService" ref="emailService"/>
+    </bean>
+
+</beans>
