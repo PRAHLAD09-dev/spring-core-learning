@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- ================= PAYMENT IMPLEMENTATIONS ================= -->
+
+    <!-- UPI Payment -->
+    <bean id="upiPayment"
+          class="in.prahlad.springcore.day2.payment.UpiPayment"/>
+
+    <!-- Card Payment -->
+    <bean id="cardPayment"
+          class="in.prahlad.springcore.day2.payment.CardPayment"/>
+
+
+    <!-- ================= NOTIFICATION IMPLEMENTATIONS ================= -->
+
+    <!-- Email -->
+    <bean id="emailService"
+          class="in.prahlad.springcore.day2.notification.EmailService"/>
+
+    <!-- SMS -->
+    <bean id="smsService"
+          class="in.prahlad.springcore.day2.notification.SmsService"/>
+
+
+    <!-- ================= ORDER SERVICE ================= -->
+
+    <bean id="orderService"
+          class="in.prahlad.springcore.day2.service.OrderService">
+
+      <!-- Constructor Injection (Payment MANDATORY) -->
+        <!-- Change here: upiPayment OR cardPayment -->
+        <constructor-arg ref="cardPayment"/>
+
+        <!-- Setter Injection (Notification OPTIONAL) -->
+        <!-- Change here: emailService OR smsService -->
+        <property name="messageService" ref="smsService"/>
+
+    </bean>
+
+</beans>
