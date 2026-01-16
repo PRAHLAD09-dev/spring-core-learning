@@ -1,10 +1,10 @@
-package in.prahlad.springcore.ioc;
+package in.prahlad.springcore.day1;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import in.prahlad.springcore.ioc.payment.OrderService;
-import in.prahlad.springcore.ioc.notification.NotificationService;
+import in.prahlad.springcore.day1.payment.OrderService;
+import in.prahlad.springcore.day1.notification.NotificationService;
 
 public class App {
 

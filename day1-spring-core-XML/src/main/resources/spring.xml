@@ -7,14 +7,14 @@
 
     <!-- ========== PAYMENTS ========== -->
     <bean id="upiPayment"
-          class="in.prahlad.springcore.ioc.payment.UpiPayment"/>
+          class="in.prahlad.springcore.day1.payment.UpiPayment"/>
 
     <bean id="cardPayment"
-          class="in.prahlad.springcore.ioc.payment.CardPayment"/>
+          class="in.prahlad.springcore.day1.payment.CardPayment"/>
 
     <!-- OrderService using Constructor IOC -->
     <bean id="orderService"
-          class="in.prahlad.springcore.ioc.service.OrderService">
+          class="in.prahlad.springcore.day1.payment.OrderService">
         <constructor-arg ref="upiPayment"/>
         <!-- constructor-arg ref="cardPayment"/ -->
     </bean>
@@ -22,14 +22,14 @@
 
     <!-- ========== NOTIFICATIONS ========== -->
     <bean id="emailService"
-          class="in.prahlad.springcore.ioc.notification.EmailService"/>
+          class="in.prahlad.springcore.day1.notification.EmailService"/>
 
     <bean id="smsService"
-          class="in.prahlad.springcore.ioc.notification.SmsService"/>
+          class="in.prahlad.springcore.day1.notification.SmsService"/>
 
     <!-- NotificationService using Setter IOC -->
     <bean id="notificationService"
-          class="in.prahlad.springcore.ioc.notification.NotificationService">
+          class="in.prahlad.springcore.day1.notification.NotificationService">
         <property name="messageService" ref="emailService"/>
         <!-- property name="messageService" ref="smsService"/ -->
     </bean>

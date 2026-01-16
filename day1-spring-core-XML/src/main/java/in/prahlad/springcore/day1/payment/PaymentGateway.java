@@ -1,4 +1,4 @@
-package in.prahlad.springcore.ioc.payment;
+package in.prahlad.springcore.day1.payment;
 
 public interface PaymentGateway 
 {

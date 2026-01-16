@@ -1,4 +1,4 @@
-package in.prahlad.springcore.ioc.notification;
+package in.prahlad.springcore.day1.notification;
 
 public class SmsService implements MessageService
 {
