@@ -85,6 +85,54 @@ Understand Dependency Injection (IOC) using Java classes + XML configuration.
 - SMS sentYour order is confirmed
 - Order placed successfully
 
+## Day 3 – Spring Core (Java Config + Annotations)
+
+### Topics Covered
+- Spring IOC using Java Configuration
+- XML free configuration
+- Bean creation using annotations
+- Constructor Injection
+- Interface based dependency injection
+
+### Annotations Used
+- @Configuration
+- @ComponentScan
+- @Component
+- @Service
+- @Autowired
+- AnnotationConfigApplicationContext
+
+### Project Structure
+src/main/java
+└── in.prahlad.springcore.day3
+    ├── config
+    │   └── AppConfig.java
+    ├── payment
+    │   ├── PaymentGateway.java
+    │   └── UpiPayment.java
+    ├── notification
+    │   ├── MessageService.java
+    │   ├── EmailService.java
+    │   ├── NotificationService.java
+    ├── service
+    │   └── OrderService.java
+    └── App.java
+
+### Flow
+- Spring container starts using AnnotationConfigApplicationContext
+- Beans are created using annotations
+- OrderService uses Constructor Injection for Payment
+- NotificationService uses Setter Injection for MessageService
+- No XML configuration used
+
+### Output
+- Payment of ₹5000.5 done using UPI
+- Email Sent:Your order is confirmed
+- Order placed successfully
+
+### Key Learning
+Java based configuration replaces XML and is widely used in real world Spring applications.
+
 ## Tech Stack
 - Java
 - Spring Core
@@ -94,5 +142,4 @@ Understand Dependency Injection (IOC) using Java classes + XML configuration.
 ---
 
 ## Upcoming
-- Day 3: java + Annotations
 - Day 4: Full Annotation based Spring Core
