@@ -1,145 +1,110 @@
-# Spring Core Learning 
+# Spring Core Learning (IOC → Annotations)
 
-This repository contains my day-wise learning and implementation of Spring Core.
+This repository documents my step-by-step learning of Spring Core concepts, moving from
+traditional XML-based configuration to modern annotation-driven configuration.
+
+The goal was to clearly understand IOC, Dependency Injection, and Bean lifecycle
+before moving to Spring Boot.
 
 ---
 
-## Day 1 – Spring Core IOC (XML Based Configuration)
+## Learning Breakdown
 
-### Topics Covered
-- What is IOC (Inversion of Control)
-- Dependency Injection using XML
-- Spring IOC Container
- - ClassPathXmlApplicationContext
+### Day 1 – IOC using XML
+Project: spring-core-ioc
+
+- Pure XML configuration
+- Bean creation using <bean>
 - Constructor Injection
 - Setter Injection
+- Interface-based design (PaymentGateway, MessageService)
+- Manual wiring using spring.xml
 
-### Example Modules
-- Payment Module (UPI Payment , Card Payment)
-- Notification Module (Email Notification , SMS Notificatin)
-
-### Output
-- Payment of ₹ 999.0 done using UPI
-- Order placed succesfully
-- Email sent: Your order is confirmed.
-
+Key concepts learned:
+- IOC Container
+- BeanFactory vs ApplicationContext
+- Tight vs Loose coupling
 
 ---
 
-# Day 2 – Spring Core (Java + XML Configuration)
+### Day 2 – Java + XML Configuration
+Project: day2-spring-core-java-XML
 
-## Objective
-Understand Dependency Injection (IOC) using Java classes + XML configuration.
+- Java classes + XML bean configuration
+- Cleaner package structure
+- Real-world style service layer
+- Constructor-based DI preferred
+- XML still controls bean wiring
 
----
-
-### Topics Covered
-- Constructor Injection
-- Setter Injection
-- Loose Coupling using Interfaces
-- XML based bean configuration
-
----
-
-## Project Structure
-- payment
- - PaymentGateway (interface)
- - UpiPayment (implementation)
- - CardPayment (implementation)
-
-- notification
- - MessageService (interface)
- - EmailService (implementation)
- - SmsService (implementation)
-
-- service
- - OrderService
-
-- resources
- - spring.xml
+Key concepts learned:
+- Why constructor injection is preferred
+- Separation of service, payment, notification layers
+- XML drawbacks in large projects
 
 ---
 
-## IOC Implementation
+### Day 3 – Java + Annotations
+Project: day3-spring-core-java-annotation
 
-### Constructor Injection (Payment)
-- OrderService depends on PaymentGateway
-- Injected using constructor via XML
+- XML completely removed
+- Beans created using annotations
+- Java-based configuration class
 
-### Setter Injection (Notification)
-- OrderService depends on MessageService
-- Injected using setter via XML
-
----
-
-## XML Configuration (spring.xml)
-- Beans are defined for implementation classes
-- Dependencies are wired using:
-  - <constructor-arg>
-  - <property>
-
----
-
-## Output
-- Payment of ₹2000.0 done using CARD
-- SMS sentYour order is confirmed
-- Order placed successfully
-
-## Day 3 – Spring Core (Java Config + Annotations)
-
-### Topics Covered
-- Spring IOC using Java Configuration
-- XML free configuration
-- Bean creation using annotations
-- Constructor Injection
-- Interface based dependency injection
-
-### Annotations Used
-- @Configuration
-- @ComponentScan
+Annotations used:
 - @Component
 - @Service
 - @Autowired
-- AnnotationConfigApplicationContext
+- @ComponentScan
+- @Configuration
 
-### Project Structure
-src/main/java
-└── in.prahlad.springcore.day3
-    ├── config
-    │   └── AppConfig.java
-    ├── payment
-    │   ├── PaymentGateway.java
-    │   └── UpiPayment.java
-    ├── notification
-    │   ├── MessageService.java
-    │   ├── EmailService.java
-    │   ├── NotificationService.java
-    ├── service
-    │   └── OrderService.java
-    └── App.java
-
-### Flow
-- Spring container starts using AnnotationConfigApplicationContext
-- Beans are created using annotations
-- OrderService uses Constructor Injection for Payment
-- NotificationService uses Setter Injection for MessageService
-- No XML configuration used
-
-### Output
-- Payment of ₹5000.5 done using UPI
-- Email Sent:Your order is confirmed
-- Order placed successfully
-
-### Key Learning
-Java based configuration replaces XML and is widely used in real world Spring applications.
-
-## Tech Stack
-- Java
-- Spring Core
-- Maven
-- Eclipse IDE
+Key concepts learned:
+- Annotation-based IOC
+- Component scanning
+- Reduced boilerplate
+- Cleaner and maintainable configuration
 
 ---
 
-## Upcoming
-- Day 4: Full Annotation based Spring Core
+### Day 4 – Annotation Only (Modern Spring Style)
+Project: day4-spring-core-annotation-only
+
+- No XML
+- No external Java config layer
+- Fully annotation-driven
+- Single implementation per interface (no qualifier needed)
+
+Key concepts learned:
+- How Spring Boot style configuration works internally
+- Auto-detection of beans
+- Why explicit config layers are rarely written today
+- Foundation for Spring Boot auto-configuration
+
+---
+
+## Core Concepts Covered
+- Inversion of Control (IOC)
+- Dependency Injection (DI)
+- Constructor vs Setter Injection
+- Loose Coupling using Interfaces
+- Bean creation and wiring
+- Component Scanning
+- Annotation-based configuration
+
+---
+
+## Key Takeaway
+
+Spring configuration has evolved over time:
+- XML-based configuration (legacy)
+- Java-based configuration
+- Annotation-driven configuration (modern)
+- Auto-configuration in Spring Boot
+
+This repository completes Spring Core fundamentals and serves as a base
+for advanced backend development using Spring Boot.
+
+---
+
+## Status
+Spring Core fundamentals completed.  
+Next phase: Spring Boot (MVC + REST, JPA, Security).
